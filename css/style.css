@@ -879,3 +879,18 @@ html[data-theme="light"] .nav-cta{
   background:#0b74d1; color:#fff;
   box-shadow:0 20px 44px -18px rgba(10,102,194,.88);
 }
+/* =====================================================
+   فلتر تصنيف الأعمال
+===================================================== */
+.filter-bar{
+  display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;
+}
+.filter-btn{
+  font-family:var(--font-mono); font-size:12.5px; padding:9px 18px; border-radius:100px;
+  border:1px solid var(--border); background:var(--bg-2); color:var(--text-dim);
+  transition:.3s var(--ease); cursor:pointer;
+}
+.filter-btn:hover{ color:var(--text); border-color:var(--border-strong); }
+.filter-btn.active{
+  background:var(--accent-2); color:#04070c; border-color:var(--accent-2); font-weight:600;
+}
