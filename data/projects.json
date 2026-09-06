@@ -4,6 +4,7 @@
       "id": "ammar-doors",
       "featured": true,
       "image": "images/project1.jpg",
+      "tags": ["logo", "card"],
       "category": {
         "ar": "هوية بصرية",
         "en": "Brand Identity"
@@ -24,20 +25,14 @@
         "ar": "صممت لوجو دائري فاخر بلمسة معدنية وذهبية، وكارت شخصي متكامل بخامات فاخرة وQR Code.",
         "en": "Designed a luxury circular metallic-gold logo and a complete premium business card with QR code."
       },
-      "tech": [
-        "Illustrator",
-        "Photoshop",
-        "Brand Identity"
-      ],
-      "price": {
-        "value": "100",
-        "currency": "USD"
-      }
+      "tech": ["Illustrator", "Photoshop", "Brand Identity"],
+      "price": { "value": "100", "currency": "USD" }
     },
     {
       "id": "elite-nexus",
       "featured": false,
       "image": "images/project2.jpg",
+      "tags": ["logo"],
       "category": {
         "ar": "تصميم لوجو",
         "en": "Logo Design"
@@ -58,15 +53,8 @@
         "ar": "صممت شعار نسر مجسم بتفاصيل معدنية دقيقة وتوازن بصري كامل.",
         "en": "Designed a dimensional eagle emblem with fine metallic detail and full visual balance."
       },
-      "tech": [
-        "Illustrator",
-        "Photoshop",
-        "3D Render"
-      ],
-      "price": {
-        "value": "50",
-        "currency": "USD"
-      }
+      "tech": ["Illustrator", "Photoshop", "3D Render"],
+      "price": { "value": "50", "currency": "USD" }
     }
   ]
 }
