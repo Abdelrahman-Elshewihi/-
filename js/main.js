@@ -3,6 +3,7 @@
    All project content lives in data/projects.json.
 ===================================================== */
 let PROJECTS = [];
+let CURRENT_FILTER = "all";
 
 /* =====================================================
    i18n
@@ -25,6 +26,7 @@ const I18N = {
     skillsEyebrow:"الأدوات", skillsTitle:"مهارات بتتوسع باستمرار", skillsDesc:"دي أهم الأدوات اللي بستخدمها في شغلي.",
     sg1:"تصميم وهوية بصرية", sg2:"تطوير وهندسة",
     projEyebrow:"الأعمال", projTitle:"أعمال اتعملت بعناية", projDesc:"اضغط على أي مشروع لعرض التفاصيل كاملة، وعلى الكمبيوتر هتلاقي تفاعلات إضافية.",
+    filterAll:"الكل", filterLogo:"لوجوهات", filterCard:"كروت شخصية", filterWebsite:"مواقع", filterVideo:"مونتاج", filterApp:"تطبيقات", filterVoice:"فويس أوفر",
     projValue:"القيمة التقديرية", viewLabel:"عرض", openLabel:"فتح",
     contactEyebrow:"لنبدأ مشروعك", whatsappBtn:"واتساب", linkedinBtn:"LinkedIn",
     footNote:"صُمم وبُني يدويًا — 2026. أول مشروع في الـPortfolio هو الـPortfolio نفسه.",
@@ -47,6 +49,7 @@ const I18N = {
     skillsEyebrow:"Toolkit", skillsTitle:"Skills that keep expanding", skillsDesc:"These are the key tools I actually use.",
     sg1:"Design & Brand Identity", sg2:"Software Development",
     projEyebrow:"Work", projTitle:"Projects made with care", projDesc:"Click any project for the full details, with extra interactions on desktop.",
+    filterAll:"All", filterLogo:"Logos", filterCard:"Business Cards", filterWebsite:"Websites", filterVideo:"Video Editing", filterApp:"Apps", filterVoice:"Voice Over",
     projValue:"Est. value", viewLabel:"VIEW", openLabel:"OPEN",
     contactEyebrow:"Start your project", whatsappBtn:"WhatsApp", linkedinBtn:"LinkedIn",
     footNote:"Designed & built by hand — 2026. This portfolio is itself project #1.",
@@ -79,8 +82,8 @@ function renderProjects(){
 
   grid.innerHTML = "";
 
-
-  PROJECTS.forEach(project => {
+  const filtered = CURRENT_FILTER === "all" ? PROJECTS : PROJECTS.filter(p => (p.tags || []).includes(CURRENT_FILTER));
+  filtered.forEach(project => {
     const card = document.createElement("article");
     card.className = `proj-card${project.featured ? " featured" : ""}`;
     card.setAttribute("data-cursor-label", t("viewLabel"));
@@ -163,9 +166,9 @@ function setupTilt(){
       const rotX = (0.5 - py) * 7;
       const rotY = (px - 0.5) * 9;
       card.style.transform = `translateY(-6px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-card.style.setProperty("--gx", (px*100)+"%");
+      card.style.setProperty("--gx", (px*100)+"%");
       card.style.setProperty("--gy", (py*100)+"%");
-    });
+       });
     card.addEventListener("mouseleave", ()=>{ card.style.transform = ""; });
   });
 }
@@ -340,7 +343,6 @@ if(isTouch){
     });
   });
 }
-
 /* =====================================================
    INTRO
 ===================================================== */
@@ -469,6 +471,22 @@ if(!window.gsap){
 
 /* init i18n on load */
 applyI18n();
+
+function setupFilters(){
+  const bar = document.getElementById("filterBar");
+  if(!bar) return;
+  bar.querySelectorAll(".filter-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      CURRENT_FILTER = btn.getAttribute("data-filter");
+      bar.querySelectorAll(".filter-btn").forEach(b=>{
+        b.classList.toggle("active", b === btn);
+        b.setAttribute("aria-selected", b === btn ? "true" : "false");
+      });
+      renderProjects();
+    });
+  });
+}
+setupFilters();
 
 /* =====================================================
    PROJECT DATA
