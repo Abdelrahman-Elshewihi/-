@@ -127,30 +127,55 @@
   <section id="skills">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow" data-i18n="skillsEyebrow">الأدوات</div>
+        <div class="eyebrow" data-i18n="skillsEyebrow">المهارات والخبرات</div>
         <h2 data-i18n="skillsTitle">مهارات بتتوسع باستمرار</h2>
-        <p data-i18n="skillsDesc">دي أهم الأدوات اللي بستخدمها في شغلي.</p>
+        <p data-i18n="skillsDesc">من الهوية البصرية والتصميم، لحد تطوير المواقع والبرمجة.</p>
       </div>
       <div class="skill-groups">
         <div class="skill-group reveal">
-          <h4 data-i18n="sg1">تصميم وهوية بصرية</h4>
+          <div class="skill-group-head">
+            <h4 data-i18n="sg1">التصميم والهوية البصرية</h4>
+            <span class="skill-group-sub">Visual Design &amp; Branding</span>
+          </div>
           <div class="chip-cloud">
             <span class="chip"><i class="lvl"></i>Logo Design</span>
-            <span class="chip"><i class="lvl"></i>Business Cards</span>
             <span class="chip"><i class="lvl"></i>Brand Identity</span>
-            <span class="chip"><i class="lvl"></i>Photoshop</span>
-            <span class="chip"><i class="lvl"></i>Illustrator</span>
+            <span class="chip"><i class="lvl"></i>Business Cards</span>
+            <span class="chip"><i class="lvl"></i>Graphic Design</span>
           </div>
         </div>
         <div class="skill-group reveal">
-          <h4 data-i18n="sg2">تطوير وهندسة</h4>
+          <div class="skill-group-head">
+            <h4 data-i18n="sg2">تطوير الويب</h4>
+            <span class="skill-group-sub">Web Development</span>
+          </div>
           <div class="chip-cloud">
-            <span class="chip"><i class="lvl"></i>HTML / CSS / JS</span>
+            <span class="chip"><i class="lvl"></i>HTML</span>
+            <span class="chip"><i class="lvl"></i>CSS</span>
+            <span class="chip"><i class="lvl"></i>JavaScript</span>
             <span class="chip"><i class="lvl"></i>React</span>
             <span class="chip"><i class="lvl"></i>Next.js</span>
             <span class="chip"><i class="lvl"></i>GSAP</span>
-            <span class="chip"><i class="lvl"></i>Data Structures</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <h4 data-i18n="sg3">البرمجة وعلوم الحاسب</h4>
+            <span class="skill-group-sub">Programming &amp; Computer Science</span>
+          </div>
+          <div class="chip-cloud">
             <span class="chip"><i class="lvl"></i>Python</span>
+            <span class="chip"><i class="lvl"></i>Data Structures</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <h4 data-i18n="sg4">الأدوات والتقنيات</h4>
+            <span class="skill-group-sub">Tools &amp; Technologies</span>
+          </div>
+          <div class="chip-cloud">
+            <span class="chip"><i class="lvl"></i>Photoshop</span>
+            <span class="chip"><i class="lvl"></i>Illustrator</span>
           </div>
         </div>
       </div>
@@ -222,7 +247,16 @@
 <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="modal">
     <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
-    <div class="modal-media"><img id="modalImg" src="" alt=""></div>
+    <div class="modal-media">
+      <img id="modalImg" src="" alt="">
+      <div class="modal-video-wrap" id="modalVideoWrap">
+        <div class="video-backdrop" id="modalVideoBackdrop"></div>
+        <div class="video-stage" id="modalVideoStage">
+          <iframe id="modalVideoFrame" src="" title="Project video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      <a href="#" target="_blank" rel="noopener" class="modal-video-fallback" id="modalVideoFallback" data-i18n="watchOnYoutube">شاهد الفيديو على يوتيوب ↗</a>
+    </div>
     <div class="modal-body">
       <div class="proj-cat" id="modalCat"></div>
       <h3 class="proj-title modal-title" id="modalTitle"></h3>
