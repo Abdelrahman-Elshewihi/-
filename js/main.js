@@ -1,9 +1,27 @@
 /* =====================================================
    DATA
-   All project content lives in data/projects.json.
+   كل محتوى المشاريع موجود في data/projects.json — مش هنا.
+   عشان تضيف مشروع جديد، افتح data/projects.json بس ومتلمسش الملف ده.
+
+   شكل كل مشروع في projects.json:
+   {
+     "id": "معرّف فريد بالإنجليزي",
+     "featured": true/false          -> true = كارت كبير في الأول
+     "image": "images/xxx.jpg"       -> اختياري لو فيه "video"
+     "video": "كود يوتيوب فقط"        -> اختياري، لو موجود بيشغل فيديو بدل الصورة
+     "videoVertical": true/false     -> true لو الفيديو Shorts (عمودي)
+     "tags": ["logo","card","website","video","app","voice"]  -> يحدد تحت أي فلتر يظهر
+     "category": {"ar":"..","en":".."},
+     "title":    {"ar":"..","en":".."},
+     "desc":     {"ar":"..","en":".."},
+     "problem":  {"ar":"..","en":".."},
+     "did":      {"ar":"..","en":".."},
+     "tech": ["اسم أداة 1","اسم أداة 2"],
+     "price": {"value":"100","currency":"USD"}
+   }
 ===================================================== */
 let PROJECTS = [];
-let CURRENT_FILTER = "all";
+let CURRENT_FILTER = "all"; // "all" أو أي كلمة من الـ tags (logo/card/website/video/app/voice)
 
 /* =====================================================
    i18n
@@ -23,14 +41,14 @@ const I18N = {
     b2t:"تصميم جرافيك", b2d:"لوجوهات، كروت شخصية، وهويات بصرية — من الفكرة للتسليم.",
     b3t:"حل المشكلات", b3d:"بافكر في المشكلة الأساسية قبل الحل — عشان النتيجة تكون مفيدة فعلاً.",
     b4t:"بشتغل دلوقتي على", b4d:"تطوير مهاراتي في البرمجة والتصميم، وبناء تجارب رقمية مختلفة.",
-    skillsEyebrow:"الأدوات", skillsTitle:"مهارات بتتوسع باستمرار", skillsDesc:"دي أهم الأدوات اللي بستخدمها في شغلي.",
-    sg1:"تصميم وهوية بصرية", sg2:"تطوير وهندسة",
+    skillsEyebrow:"المهارات والخبرات", skillsTitle:"مهارات بتتوسع باستمرار", skillsDesc:"من الهوية البصرية والتصميم، لحد تطوير المواقع والبرمجة.",
+    sg1:"التصميم والهوية البصرية", sg2:"تطوير الويب", sg3:"البرمجة وعلوم الحاسب", sg4:"الأدوات والتقنيات",
     projEyebrow:"الأعمال", projTitle:"أعمال اتعملت بعناية", projDesc:"اضغط على أي مشروع لعرض التفاصيل كاملة، وعلى الكمبيوتر هتلاقي تفاعلات إضافية.",
     filterAll:"الكل", filterLogo:"لوجوهات", filterCard:"كروت شخصية", filterWebsite:"مواقع", filterVideo:"مونتاج", filterApp:"تطبيقات", filterVoice:"فويس أوفر",
     projValue:"القيمة التقديرية", viewLabel:"عرض", openLabel:"فتح",
     contactEyebrow:"لنبدأ مشروعك", whatsappBtn:"واتساب", linkedinBtn:"LinkedIn",
     footNote:"صُمم وبُني يدويًا — 2026. أول مشروع في الـPortfolio هو الـPortfolio نفسه.",
-    modalProblem:"المشكلة", modalDid:"اللي عملته", modalValue:"القيمة التقديرية"
+    modalProblem:"المشكلة", modalDid:"اللي عملته", modalValue:"القيمة التقديرية", watchOnYoutube:"شاهد الفيديو على يوتيوب ↗"
   },
   en:{
     skip:"Skip to content", introSkip:"Tap anywhere to continue",
@@ -46,14 +64,14 @@ const I18N = {
     b2t:"Creative Work", b2d:"Logo design, business cards, and full brand identities for real clients — from concept to delivery.",
     b3t:"Problem Solving", b3d:"I think about the root problem before the solution — so the result is actually useful.",
     b4t:"Currently working on", b4d:"Improving my programming and design skills, and building digital experiences.",
-    skillsEyebrow:"Toolkit", skillsTitle:"Skills that keep expanding", skillsDesc:"These are the key tools I actually use.",
-    sg1:"Design & Brand Identity", sg2:"Software Development",
+    skillsEyebrow:"Skills & Expertise", skillsTitle:"Skills that keep expanding", skillsDesc:"From visual identity and design, to web development and programming.",
+    sg1:"Visual Design", sg2:"Web Development", sg3:"Programming & Computer Science", sg4:"Tools & Technologies",
     projEyebrow:"Work", projTitle:"Projects made with care", projDesc:"Click any project for the full details, with extra interactions on desktop.",
     filterAll:"All", filterLogo:"Logos", filterCard:"Business Cards", filterWebsite:"Websites", filterVideo:"Video Editing", filterApp:"Apps", filterVoice:"Voice Over",
     projValue:"Est. value", viewLabel:"VIEW", openLabel:"OPEN",
     contactEyebrow:"Start your project", whatsappBtn:"WhatsApp", linkedinBtn:"LinkedIn",
     footNote:"Designed & built by hand — 2026. This portfolio is itself project #1.",
-    modalProblem:"The problem", modalDid:"What I did", modalValue:"Est. value"
+    modalProblem:"The problem", modalDid:"What I did", modalValue:"Est. value", watchOnYoutube:"Watch on YouTube ↗"
   }
 };
 let LANG = "ar";
@@ -98,9 +116,19 @@ function renderProjects(){
     media.className = "proj-media";
 
     const image = document.createElement("img");
-    image.src = project.image;
+    // لو مفيش "image" متحطة للمشروع وعنده فيديو، هناخد صورة الغلاف تلقائي من يوتيوب — مش لازم ترفع صورة بنفسك لكل فيديو
+    image.src = project.image || (project.video ? `https://img.youtube.com/vi/${project.video}/hqdefault.jpg` : "");
     image.alt = getLocalized(project.title);
     image.loading = "lazy";
+
+    media.appendChild(image);
+
+    if(project.video){
+      const playIcon = document.createElement("div");
+      playIcon.className = "proj-play";
+      playIcon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="rgba(5,7,12,.55)" stroke="rgba(255,255,255,.5)"/><path d="M10 8.5v7l6-3.5-6-3.5Z" fill="#fff"/></svg>`;
+      media.appendChild(playIcon);
+    }
 
     const body = document.createElement("div");
     body.className = "proj-body";
@@ -130,9 +158,11 @@ function renderProjects(){
 
     const valueText = document.createElement("span");
     valueText.className = "v";
-    valueText.textContent = `${project.price.value} ${project.price.currency}`;
+    // priceText (لو موجود) بيبقى بديل نصي زي "تواصل معنا"، وبيتقدم على السعر الرقمي
+    valueText.textContent = project.priceText
+      ? getLocalized(project.priceText)
+      : `${project.price.value} ${project.price.currency}`;
 
-    media.appendChild(image);
     body.append(category, title, description, open);
     value.append(valueLabel, valueText);
     card.append(glare, media, body, value);
@@ -168,14 +198,45 @@ function setupTilt(){
       card.style.transform = `translateY(-6px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
       card.style.setProperty("--gx", (px*100)+"%");
       card.style.setProperty("--gy", (py*100)+"%");
-       });
+    });
     card.addEventListener("mouseleave", ()=>{ card.style.transform = ""; });
   });
 }
 
 function openModal(p){
-  document.getElementById("modalImg").src = p.image;
-  document.getElementById("modalImg").alt = getLocalized(p.title);
+  // بيحدد إيه اللي يتعرض في أعلى نافذة التفاصيل: فيديو يوتيوب لو موجود، أو صورة الغلاف لو مفيش
+  const modalImg = document.getElementById("modalImg");
+  const modalMedia = document.querySelector(".modal-media");
+  const videoWrap = document.getElementById("modalVideoWrap");
+  const videoFrame = document.getElementById("modalVideoFrame");
+  const videoBackdrop = document.getElementById("modalVideoBackdrop");
+  if(p.video){
+    // p.video = كود الفيديو بس (من https://youtu.be/CODE أو /shorts/CODE) — مش اللينك كامل
+    videoFrame.src = `https://www.youtube.com/embed/${p.video}?rel=0`;
+    videoWrap.classList.add("active");
+    // بنلغي نسبة العرض الثابتة بتاعة modal-media يدوياً (احتياط لأي متصفح مايدعمش :has في CSS)
+    modalMedia.style.aspectRatio = "auto";
+    // p.videoVertical = true لو الفيديو Shorts (عمودي) → الصندوق الداخلي يبقى طولي 9:16
+    // أو عريض 16:9 لو مش عمودي — وفي الحالتين الفيديو بيظهر كامل من غير أي قص
+    videoWrap.classList.toggle("vertical", !!p.videoVertical);
+    videoWrap.classList.toggle("horizontal", !p.videoVertical);
+    // الفراغ حوالين الفيديو بيتملى بنسخة مموّهة من صورة غلاف نفس الفيديو (تأثير زي Apple Music)
+    videoBackdrop.style.backgroundImage = `url(https://img.youtube.com/vi/${p.video}/hqdefault.jpg)`;
+    modalImg.classList.add("hidden");
+    // رابط احتياطي: لو الفيديو مش راضي يشتغل جوه الموقع (مثلاً "Allow embedding" مقفول من يوتيوب)
+    const fallback = document.getElementById("modalVideoFallback");
+    fallback.href = `https://www.youtube.com/watch?v=${p.video}`;
+    fallback.classList.add("active");
+  }else{
+    videoFrame.src = "";
+    videoWrap.classList.remove("active", "vertical", "horizontal");
+    modalMedia.style.aspectRatio = "";
+    document.getElementById("modalVideoFallback").classList.remove("active");
+    modalImg.classList.remove("hidden");
+    // لو المشروع مفيهوش صورة غلاف مرفوعة، وفيه فيديو، بناخد صورة الغلاف تلقائي من يوتيوب
+    modalImg.src = p.image || (p.video ? `https://img.youtube.com/vi/${p.video}/hqdefault.jpg` : "");
+    modalImg.alt = getLocalized(p.title);
+  }
   document.getElementById("modalCat").textContent = getLocalized(p.category);
   document.getElementById("modalTitle").textContent = getLocalized(p.title);
   document.getElementById("modalDesc").textContent = getLocalized(p.desc);
@@ -191,7 +252,10 @@ function openModal(p){
   document.getElementById("modalDidLabel").textContent = t("modalDid");
   document.getElementById("modalDid").textContent = getLocalized(p.did);
   document.getElementById("modalValueLabel").textContent = t("modalValue");
-  document.getElementById("modalPrice").textContent = `${p.price.value} ${p.price.currency}`;
+  // priceText (لو موجود) بيبقى بديل نصي زي "تواصل معنا"، وبيتقدم على السعر الرقمي
+  document.getElementById("modalPrice").textContent = p.priceText
+    ? getLocalized(p.priceText)
+    : `${p.price.value} ${p.price.currency}`;
   const overlay = document.getElementById("modalOverlay");
   overlay.classList.add("open");
   overlay.setAttribute("aria-hidden","false");
@@ -199,6 +263,8 @@ function openModal(p){
 }
 function closeModal(){
   const overlay = document.getElementById("modalOverlay");
+  document.getElementById("modalVideoFrame").src = "";
+  document.getElementById("modalVideoBackdrop").style.backgroundImage = "";
   overlay.classList.remove("open");
   overlay.setAttribute("aria-hidden","true");
   document.body.style.overflow = "";
@@ -343,6 +409,7 @@ if(isTouch){
     });
   });
 }
+
 /* =====================================================
    INTRO
 ===================================================== */
