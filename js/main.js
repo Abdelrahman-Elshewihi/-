@@ -216,9 +216,11 @@ function renderProjects(){
     if(project.priceText){
       valueText.textContent = getLocalized(project.priceText);
     }else if(discount){
-      valueText.innerHTML = `<s class="price-original">${discount.original}</s> <span class="price-currency">${discount.currency}</span> <span class="price-arrow" aria-hidden="true">→</span> <b class="price-discounted">${discount.discounted}</b> <span class="price-currency">${discount.currency}</span>`;
+      // ملحوظة مهمة: الاتجاه dir="ltr" هنا إجباري — من غيره المتصفح بيقلب ترتيب
+      // الأرقام والعملة عشوائي لأن الصفحة كلها RTL والأرقام طبيعتها LTR
+      valueText.innerHTML = `<span class="price-value" dir="ltr"><s class="price-original">${discount.original}</s> <b class="price-discounted">${discount.discounted}</b> <span class="price-currency">${discount.currency}</span></span>`;
     }else{
-      valueText.textContent = `${project.price.value} ${project.price.currency}`;
+      valueText.innerHTML = `<span class="price-value" dir="ltr">${project.price.value} ${project.price.currency}</span>`;
     }
 
     body.append(category, title, description, open);
@@ -318,10 +320,11 @@ function openModal(p){
     modalPriceEl.textContent = getLocalized(p.priceText);
     modalSaleBadge.textContent = "";
   }else if(modalDiscount){
-    modalPriceEl.innerHTML = `<s class="price-original">${modalDiscount.original}</s> <span class="price-currency">${modalDiscount.currency}</span> <span class="price-arrow" aria-hidden="true">→</span> <span class="price-discounted">${modalDiscount.discounted}</span> <span class="price-currency">${modalDiscount.currency}</span>`;
+    // نفس ملحوظة الاتجاه: dir="ltr" إجباري عشان الترتيب مايتقلبش في صفحة RTL
+    modalPriceEl.innerHTML = `<span class="price-value" dir="ltr"><s class="price-original">${modalDiscount.original}</s> <span class="price-discounted">${modalDiscount.discounted}</span> <span class="price-currency">${modalDiscount.currency}</span></span>`;
     modalSaleBadge.textContent = `-${PROMO.percent}%`;
   }else{
-    modalPriceEl.textContent = `${p.price.value} ${p.price.currency}`;
+    modalPriceEl.innerHTML = `<span class="price-value" dir="ltr">${p.price.value} ${p.price.currency}</span>`;
     modalSaleBadge.textContent = "";
   }
   const overlay = document.getElementById("modalOverlay");
