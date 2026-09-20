@@ -1076,17 +1076,29 @@ html[data-theme="light"] .nav-cta{
   box-shadow:0 8px 20px -6px rgba(245,185,66,.55);
 }
 
-/* السعر الأصلي المشطوب + السعر بعد الخصم، في الكارت وفي المودال */
+/* السعر الأصلي المشطوب (الرقم بس) + وحدة العملة الظاهرة عادي + السعر الجديد */
 .price-original{
   color:var(--text-faint);
   text-decoration:line-through;
   font-weight:400;
   font-size:.85em;
-  margin-inline-end:4px;
+}
+.price-currency{
+  color:var(--text-faint);
+  font-size:.8em;
+  font-weight:400;
+}
+.price-arrow{
+  color:var(--text-faint);
+  font-size:.8em;
+  margin-inline:2px;
 }
 .price-discounted{
   color:#f5b942;
   font-weight:700;
+}
+.price-discounted + .price-currency{
+  color:#f5b942;
 }
 
 /* صف السعر جوه المودال + شارة الخصم بجانبه */
