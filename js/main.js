@@ -36,10 +36,10 @@ let CURRENT_FILTER = "all"; // "all" أو أي كلمة من الـ tags (logo/c
    المشاريع اللي سعرها نصي (زي "تواصل معنا") مش بتتأثر بالعرض.
 ===================================================== */
 const PROMO = {
-  active: false,
+  active: true,
   percent: 60,
   label: {
-    ar: "🎒 خصم %60 بمناسبة الدخول المدرسي — لفترة محدودة",
+    ar: "🎒 خصم %60 بمناسبة العودة المدرسية — لفترة محدودة",
     en: "🎒 60% Off — Back to School Offer, Limited Time"
   }
 };
@@ -216,7 +216,7 @@ function renderProjects(){
     if(project.priceText){
       valueText.textContent = getLocalized(project.priceText);
     }else if(discount){
-      valueText.innerHTML = `<s class="price-original">${discount.original} ${discount.currency}</s> <b class="price-discounted">${discount.discounted} ${discount.currency}</b>`;
+      valueText.innerHTML = `<s class="price-original">${discount.original}</s> <span class="price-currency">${discount.currency}</span> <span class="price-arrow" aria-hidden="true">→</span> <b class="price-discounted">${discount.discounted}</b> <span class="price-currency">${discount.currency}</span>`;
     }else{
       valueText.textContent = `${project.price.value} ${project.price.currency}`;
     }
@@ -318,7 +318,7 @@ function openModal(p){
     modalPriceEl.textContent = getLocalized(p.priceText);
     modalSaleBadge.textContent = "";
   }else if(modalDiscount){
-    modalPriceEl.innerHTML = `<s class="price-original">${modalDiscount.original} ${modalDiscount.currency}</s> <span class="price-discounted">${modalDiscount.discounted} ${modalDiscount.currency}</span>`;
+    modalPriceEl.innerHTML = `<s class="price-original">${modalDiscount.original}</s> <span class="price-currency">${modalDiscount.currency}</span> <span class="price-arrow" aria-hidden="true">→</span> <span class="price-discounted">${modalDiscount.discounted}</span> <span class="price-currency">${modalDiscount.currency}</span>`;
     modalSaleBadge.textContent = `-${PROMO.percent}%`;
   }else{
     modalPriceEl.textContent = `${p.price.value} ${p.price.currency}`;
