@@ -1076,6 +1076,12 @@ html[data-theme="light"] .nav-cta{
   box-shadow:0 8px 20px -6px rgba(245,185,66,.55);
 }
 
+/* الصندوق الموحّد للسعر بالكامل — بيضمن ترتيب ثابت للأرقام والعملة حتى في صفحة RTL */
+.price-value{
+  display:inline-flex;
+  align-items:baseline;
+  gap:5px;
+}
 /* السعر الأصلي المشطوب (الرقم بس) + وحدة العملة الظاهرة عادي + السعر الجديد */
 .price-original{
   color:var(--text-faint);
@@ -1087,11 +1093,6 @@ html[data-theme="light"] .nav-cta{
   color:var(--text-faint);
   font-size:.8em;
   font-weight:400;
-}
-.price-arrow{
-  color:var(--text-faint);
-  font-size:.8em;
-  margin-inline:2px;
 }
 .price-discounted{
   color:#f5b942;
