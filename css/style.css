@@ -1033,3 +1033,76 @@ html[data-theme="light"] .nav-cta{
   .skill-group-head{ gap:8px; }
   .skill-group-sub{ font-size:10px; }
 }
+
+/* =====================================================
+   نظام العروض والخصومات
+   الألوان دي (ذهبي دافئ) مقصودة ومنفصلة عن هوية الموقع الأساسية
+   (الأزرق/التركواز)، عشان شارة الخصم تلفت النظر فوراً وتوحي بالفخامة
+   في نفس الوقت — بنفس روح الذهبي المستخدم في مشاريع Ammar Doors وElite Nexus.
+===================================================== */
+
+/* لافتة العرض فوق قسم الأعمال */
+.promo-banner{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-align:center;
+  font-family:var(--font-mono);
+  font-size:13px;
+  font-weight:600;
+  color:#f5c266;
+  background:linear-gradient(135deg, rgba(245,185,66,.12), rgba(224,142,43,.06));
+  border:1px solid rgba(245,185,66,.35);
+  border-radius:100px;
+  padding:12px 22px;
+  margin-bottom:28px;
+}
+.promo-banner.active{ display:flex; }
+
+/* شارة "-60%" الثابتة على غلاف الكارت */
+.sale-badge{
+  position:absolute;
+  top:14px; inset-inline-start:14px;
+  z-index:3;
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.02em;
+  color:#241503;
+  background:linear-gradient(135deg,#f5b942,#e08e2b);
+  padding:6px 12px;
+  border-radius:100px;
+  box-shadow:0 8px 20px -6px rgba(245,185,66,.55);
+}
+
+/* السعر الأصلي المشطوب + السعر بعد الخصم، في الكارت وفي المودال */
+.price-original{
+  color:var(--text-faint);
+  text-decoration:line-through;
+  font-weight:400;
+  font-size:.85em;
+  margin-inline-end:4px;
+}
+.price-discounted{
+  color:#f5b942;
+  font-weight:700;
+}
+
+/* صف السعر جوه المودال + شارة الخصم بجانبه */
+.modal-price-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.modal-sale-badge{
+  position:static;
+  box-shadow:none;
+}
+.modal-sale-badge:empty{ display:none; }
+
+@media(max-width:480px){
+  .promo-banner{ font-size:12px; padding:10px 16px; }
+  .sale-badge{ font-size:11px; padding:5px 10px; top:10px; }
+}
