@@ -36,10 +36,10 @@ let CURRENT_FILTER = "all"; // "all" أو أي كلمة من الـ tags (logo/c
    المشاريع اللي سعرها نصي (زي "تواصل معنا") مش بتتأثر بالعرض.
 ===================================================== */
 const PROMO = {
-  active: fulse,
+  active: true,
   percent: 60,
   label: {
-    ar: "🎒 خصم %60 بمناسبة دخول المدارس — لفترة محدودة",
+    ar: "🎒 خصم %60 بمناسبة الدخول المدرسي — لفترة محدودة",
     en: "🎒 60% Off — Back to School Offer, Limited Time"
   }
 };
