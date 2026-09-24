@@ -60,47 +60,47 @@ const I18N = {
   ar:{
     skip:"تخطي إلى المحتوى", introSkip:"اضغط أي مكان للمتابعة",
     navAbout:"نبذة", navSkills:"المهارات", navProjects:"الأعمال", navContact:"تواصل", navCta:"لنبدأ",
-    heroTitle1:"طالب في كلية الهندسة،", heroTitle2:"مصمم جرافيك وبحب البرمجة.",
-    heroSub:"طالب في كلية الهندسة، بحب جدًا البرمجة وبحوّل الأفكار لتجارب رقمية متكاملة.",
+    heroTitle1:"طالب في كلية الهندسة،", heroTitle2:"أصمم وأبني تجارب رقمية.",
+    heroSub:"مصمم جرافيك ومهتم بالبرمجة — بحب أجمع بين العين البصرية والمنطق في شغل واحد.",
     heroCta1:"شوف الأعمال", heroCta2:"تواصل واتساب",
     availTag:"متاح لمشاريع جديدة", scroll:"اسكرول",
-    aboutEyebrow:"مين أنا", aboutTitle:"مصمم جرافيك بيحب البرمجة.",
-    aboutDesc:"طالب في كلية الهندسة، بحب البرمجة وبحوّل الأفكار لتجارب رقمية متكاملة.",
-    b1t:"هندسة البرمجيات", b1d:"بحب البرمجة وبشتغل على تحويل الأفكار لحلول رقمية واضحة وشغالة.",
-    b1quote:"\"الكود الجميل هو اللي بيشتغل صح، مش بس اللي شكله حلو.\"",
-    b2t:"تصميم جرافيك", b2d:"لوجوهات، كروت شخصية، وهويات بصرية — من الفكرة للتسليم.",
-    b3t:"حل المشكلات", b3d:"بافكر في المشكلة الأساسية قبل الحل — عشان النتيجة تكون مفيدة فعلاً.",
-    b4t:"بشتغل دلوقتي على", b4d:"تطوير مهاراتي في البرمجة والتصميم، وبناء تجارب رقمية مختلفة.",
-    skillsEyebrow:"المهارات والخبرات", skillsTitle:"مهارات بتتوسع باستمرار", skillsDesc:"من الهوية البصرية والتصميم، لحد تطوير المواقع والبرمجة.",
+    aboutEyebrow:"مين أنا", aboutTitle:"تصميم بفكرة، وبرمجة لها هدف.",
+    aboutDesc:"بشتغل على تحويل الأفكار لشكل واضح وتجربة سهلة، مع اهتمام بالتفاصيل من أول التصميم لحد التنفيذ.",
+    b1t:"تطوير وبرمجة", b1d:"ببني حلول بسيطة وقابلة للتطوير، وبحاول أفهم المشكلة قبل ما أكتب السطر الأول.",
+    b1quote:"\"الشغل الحلو مش بس شكله حلو — لازم يكون له سبب ويشتغل صح.\"",
+    b2t:"تصميم جرافيك", b2d:"لوجوهات، كروت شخصية، وهويات بصرية — ومعاها مونتاج وموشن جرافيك عند الحاجة.",
+    b3t:"حل المشكلات", b3d:"ببدأ من احتياج المستخدم، وبعدها أختار أبسط طريق يوصل للنتيجة.",
+    b4t:"بشتغل دلوقتي على", b4d:"توسيع خبرتي في تطوير الويب وصناعة تجارب أسرع وأوضح.",
+    skillsEyebrow:"المهارات والخبرات", skillsTitle:"أدوات بتكبر مع الوقت", skillsDesc:"تصميم، تطوير ويب، ومجموعة أدوات بستخدمها حسب طبيعة كل مشروع.",
     sg1:"التصميم والهوية البصرية", sg2:"تطوير الويب", sg4:"الأدوات والتقنيات",
-    projEyebrow:"الأعمال", projTitle:"أعمال أنجزت بعناية", projDesc:"اضغط على أي مشروع لعرض التفاصيل كاملة، وعلى الكمبيوتر هتلاقي تفاعلات إضافية.",
+    projEyebrow:"الأعمال", projTitle:"نماذج من شغلي", projDesc:"كل مشروع له تفاصيله؛ افتح أي بطاقة عشان تشوف الفكرة والتنفيذ.",
     filterAll:"الكل", filterLogo:"لوجوهات", filterCard:"كروت شخصية", filterWebsite:"مواقع", filterVideo:"مونتاج", filterApp:"تطبيقات", filterVoice:"فويس أوفر",
     projValue:"القيمة التقديرية", viewLabel:"عرض", openLabel:"فتح",
-    contactEyebrow:"لنبدأ مشروعك", whatsappBtn:"واتساب", linkedinBtn:"LinkedIn",
-    footNote:"صُمم وبُني يدويًا — 2026. أول مشروع في الـPortfolio هو الـPortfolio نفسه.",
-    modalProblem:"المشكلة", modalDid:"اللي عملته", modalValue:"القيمة التقديرية", watchOnYoutube:"شاهد الفيديو على يوتيوب ↗"
+    contactEyebrow:"عندك فكرة؟ خلينا نتكلم", whatsappBtn:"واتساب", linkedinBtn:"LinkedIn",
+    footNote:"صُمم وبُني يدويًا — 2026.",
+    modalProblem:"المشكلة", modalDid:"اللي اتعمل", modalValue:"القيمة التقديرية", watchOnYoutube:"شاهد الفيديو على يوتيوب ↗"
   },
   en:{
     skip:"Skip to content", introSkip:"Tap anywhere to continue",
     navAbout:"About", navSkills:"Skills", navProjects:"Work", navContact:"Contact", navCta:"Let's talk",
-    heroTitle1:"Engineering student,", heroTitle2:"Graphic designer who loves programming.",
-    heroSub:"Engineering student, graphic designer, and programming enthusiast — turning ideas into complete digital experiences.",
+    heroTitle1:"Engineering student,", heroTitle2:"I design and build digital experiences.",
+    heroSub:"Graphic designer with an interest in programming — combining visual thinking with practical execution.",
     heroCta1:"View Work", heroCta2:"Message on WhatsApp",
     availTag:"Available for new projects", scroll:"Scroll",
-    aboutEyebrow:"About", aboutTitle:"An engineering student who loves programming and design.",
-    aboutDesc:"An engineering student who loves programming and turns ideas into complete digital experiences.",
-    b1t:"Software Engineering", b1d:"I like understanding what I build and turning ideas into clear, working solutions.",
-    b1quote:"\"Beautiful code is code that works right, not just code that looks nice.\"",
-    b2t:"Creative Work", b2d:"Logo design, business cards, and full brand identities for real clients — from concept to delivery.",
-    b3t:"Problem Solving", b3d:"I think about the root problem before the solution — so the result is actually useful.",
-    b4t:"Currently working on", b4d:"Improving my programming and design skills, and building digital experiences.",
-    skillsEyebrow:"Skills & Expertise", skillsTitle:"Skills that keep expanding", skillsDesc:"From visual identity and design, to web development and programming.",
+    aboutEyebrow:"About", aboutTitle:"Design with intent. Code with purpose.",
+    aboutDesc:"I turn ideas into clear, easy-to-use experiences, paying attention from the first visual concept to the final build.",
+    b1t:"Development", b1d:"I build practical, maintainable solutions and start by understanding the problem before the code.",
+    b1quote:"\"Good work is not only about looking right — it should work for a reason.\"",
+    b2t:"Graphic Design", b2d:"Logos, business cards, and visual identities — with video editing and motion graphics when needed.",
+    b3t:"Problem Solving", b3d:"I start with the user's need, then choose the simplest path to a useful result.",
+    b4t:"Currently working on", b4d:"Expanding my web development skills and building faster, clearer digital experiences.",
+    skillsEyebrow:"Skills & Expertise", skillsTitle:"A toolkit that keeps growing", skillsDesc:"Design, web development, and the tools I choose for each project.",
     sg1:"Visual Design", sg2:"Web Development", sg4:"Tools & Technologies",
-    projEyebrow:"Work", projTitle:"Projects crafted with care", projDesc:"Click any project for the full details, with extra interactions on desktop.",
+    projEyebrow:"Work", projTitle:"Selected work", projDesc:"Every project has its own story. Open a card to see the idea and execution.",
     filterAll:"All", filterLogo:"Logos", filterCard:"Business Cards", filterWebsite:"Websites", filterVideo:"Video Editing", filterApp:"Apps", filterVoice:"Voice Over",
     projValue:"Est. value", viewLabel:"VIEW", openLabel:"OPEN",
-    contactEyebrow:"Start your project", whatsappBtn:"WhatsApp", linkedinBtn:"LinkedIn",
-    footNote:"Designed & built by hand — 2026. This portfolio is itself project #1.",
+    contactEyebrow:"Have an idea? Let's talk.", whatsappBtn:"WhatsApp", linkedinBtn:"LinkedIn",
+    footNote:"Designed & built by hand — 2026.",
     modalProblem:"The problem", modalDid:"What I did", modalValue:"Est. value", watchOnYoutube:"Watch on YouTube ↗"
   }
 };
@@ -357,8 +357,8 @@ document.getElementById("themeToggle").addEventListener("click", ()=>{
 });
 (function initTheme(){
   const saved = localStorage.getItem("theme");
-  const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
-  setTheme(saved || (prefersLight ? "light" : "dark"));
+  // The portfolio intentionally opens dark. Visitors can switch to the softer light mode.
+  setTheme(saved || "dark");
 })();
 
 /* =====================================================
@@ -375,30 +375,71 @@ document.getElementById("langToggle").addEventListener("click", ()=>{
 })();
 
 /* =====================================================
-   SOUND (off by default, tiny hover/click blips via WebAudio — no external files)
+   SOUND — subtle, optional UI tones via WebAudio.
+   No audio files, no autoplay, and the preference is remembered.
 ===================================================== */
-let soundOn = false;
+let soundOn = localStorage.getItem("uiSound") === "on";
 let audioCtx;
-function beep(freq, dur){
+let lastHoverTone = 0;
+
+function playTone(type="hover"){
   if(!soundOn) return;
   try{
     audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-    const o = audioCtx.createOscillator(); const g = audioCtx.createGain();
-    o.type = "sine"; o.frequency.value = freq;
-    g.gain.value = 0.035;
-    o.connect(g); g.connect(audioCtx.destination);
-    o.start(); g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
-    o.stop(audioCtx.currentTime + dur);
+    if(audioCtx.state === "suspended") audioCtx.resume();
+
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    const settings = type === "click"
+      ? {freq: 660, end: 880, duration: .14, volume: .018}
+      : {freq: 440, end: 560, duration: .09, volume: .009};
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(settings.freq, now);
+    osc.frequency.exponentialRampToValueAtTime(settings.end, now + settings.duration);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(settings.volume, now + .018);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + settings.duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now);
+    osc.stop(now + settings.duration + .01);
   }catch(e){}
 }
+
+function refreshSoundButton(){
+  const btn = document.getElementById("soundToggle");
+  if(!btn) return;
+  btn.style.color = soundOn ? "var(--accent-2)" : "";
+  btn.setAttribute("aria-pressed", soundOn ? "true" : "false");
+}
+
 document.getElementById("soundToggle").addEventListener("click", function(){
   soundOn = !soundOn;
-  this.style.color = soundOn ? "var(--accent-2)" : "";
-  if(soundOn) beep(880,.08);
+  localStorage.setItem("uiSound", soundOn ? "on" : "off");
+  refreshSoundButton();
+  if(soundOn) playTone("click");
 });
-document.querySelectorAll("a, button, .proj-card, .chip, .bento-card").forEach(el=>{
-  el.addEventListener("mouseenter", ()=>beep(520,.05));
+
+document.addEventListener("mouseover", e=>{
+  const target = e.target.closest("a, button, .proj-card, .chip, .bento-card");
+  if(!target || target.id === "soundToggle") return;
+  const now = performance.now();
+  if(now - lastHoverTone > 85){
+    lastHoverTone = now;
+    playTone("hover");
+  }
 });
+
+document.addEventListener("click", e=>{
+  const target = e.target.closest("a, button, .proj-card, .chip, .filter-btn");
+  if(target && target.id !== "soundToggle") playTone("click");
+});
+
+refreshSoundButton();
 
 /* =====================================================
    CUSTOM CURSOR + MAGNETIC
