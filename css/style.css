@@ -17,20 +17,20 @@
   --glow:0 0 40px rgba(63,169,255,.25);
   --r-sm:10px; --r-md:16px; --r-lg:24px; --r-xl:32px;
   --ease:cubic-bezier(.16,1,.3,1);
-  --font-display:'Boulder','Inter',sans-serif;
+  --font-display:'Space Grotesk',sans-serif;
   --font-body:'Inter',sans-serif;
   --font-mono:'JetBrains Mono',monospace;
   --font-ar:'Cairo',sans-serif;
   --nav-h:76px;
 }
 html[data-theme="light"]{
-  --bg:#f7f9fc; --bg-2:#ffffff; --bg-3:#edf1f7;
-  --accent:#2563eb; --accent-2:#087f86; --accent-3:#4f46e5;
-  --text:#172033; --text-dim:#566174; --text-faint:#929daf;
-  --border:rgba(15,23,42,.085); --border-strong:rgba(15,23,42,.16);
-  --glass:rgba(255,255,255,.78); --glass-strong:rgba(255,255,255,.95);
-  --shadow:0 18px 46px -24px rgba(15,23,42,.18);
-  --glow:0 0 40px rgba(37,99,235,.12);
+  --bg:#f3f5f9; --bg-2:#ffffff; --bg-3:#e8ecf3;
+  --accent:#2563eb; --accent-2:#0d9488; --accent-3:#4f46e5;
+  --text:#111827; --text-dim:#4b5563; --text-faint:#9aa3b2;
+  --border:rgba(15,23,42,.1); --border-strong:rgba(15,23,42,.2);
+  --glass:rgba(255,255,255,.75); --glass-strong:rgba(255,255,255,.92);
+  --shadow:0 16px 40px -20px rgba(15,23,42,.18);
+  --glow:0 0 40px rgba(37,99,235,.14);
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:auto;}
@@ -189,48 +189,28 @@ html[data-theme="light"] .nav-links a:hover, html[data-theme="light"] .nav-links
 }
 .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 30px -8px rgba(63,169,255,.5);}
 .btn-ghost{
-  position:relative; isolation:isolate; overflow:hidden;
-  min-width:188px;
+  position:relative; isolation:isolate;
   font-family:var(--font-ar); font-size:15px; font-weight:700; padding:15px 24px; border-radius:100px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(10,16,27,.82); color:var(--text);
-  display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 12px 34px -24px rgba(0,0,0,.9);
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+  border:1px solid rgba(63,169,255,.45); background:rgba(10,18,32,.72);
+  display:inline-flex; align-items:center; gap:8px; transition:.35s var(--ease); overflow:hidden;
 }
 .btn-ghost::before{
-  content:""; position:absolute; inset:-1px; padding:1px; border-radius:inherit;
-  background:conic-gradient(from 210deg,
-    transparent 0deg 38deg,
-    rgba(63,169,255,.12) 52deg,
-    var(--accent) 72deg,
-    var(--accent-2) 94deg,
-    rgba(124,156,255,.65) 108deg,
-    transparent 128deg 360deg);
+  content:""; position:absolute; inset:-2px; border-radius:inherit; padding:2px;
+  background:conic-gradient(from 0deg, transparent 0deg, transparent 70deg, var(--accent) 120deg, var(--accent-2) 165deg, transparent 215deg, transparent 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite:xor; mask-composite:exclude;
-  animation:premiumBelt 4.2s linear infinite;
+  animation:whatsappBorderSpin 2.6s linear infinite;
   z-index:-1;
 }
 .btn-ghost::after{
-  content:""; position:absolute; inset:2px; border-radius:inherit;
-  background:linear-gradient(110deg, transparent 15%, rgba(255,255,255,.055) 45%, transparent 72%);
-  transform:translateX(-115%);
-  animation:buttonSheen 4.8s ease-in-out infinite;
-  pointer-events:none;
+  content:""; position:absolute; width:70px; height:70px; border-radius:50%;
+  background:radial-gradient(circle,rgba(63,169,255,.55),transparent 68%);
+  filter:blur(8px); opacity:.6; pointer-events:none;
+  animation:whatsappGlow 2.6s linear infinite;
 }
-.btn-ghost:hover{
-  border-color:rgba(63,169,255,.42);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 16px 42px -22px rgba(34,224,224,.38), 0 0 0 1px rgba(34,224,224,.06);
-}
-@keyframes premiumBelt{to{transform:rotate(360deg);}}
-@keyframes buttonSheen{0%,55%{transform:translateX(-115%);}72%,100%{transform:translateX(115%);}}
-html[data-theme="light"] .btn-ghost{
-  background:#111827; color:#f8fafc; border-color:rgba(255,255,255,.12);
-}
-html[data-theme="light"] .btn-ghost:hover{
-  background:#0b1220;
-}
+.btn-ghost:hover{background:rgba(12,25,45,.9); border-color:var(--accent); box-shadow:0 0 28px rgba(63,169,255,.22), inset 0 0 18px rgba(63,169,255,.08);}
+@keyframes whatsappBorderSpin{to{transform:rotate(360deg);}}
+@keyframes whatsappGlow{0%{transform:translateX(-55px);opacity:.2;}50%{transform:translateX(55px);opacity:.75;}100%{transform:translateX(-55px);opacity:.2;}}
 .hero-stats{display:flex; gap:34px; margin-top:56px; flex-wrap:wrap;}
 @media(max-width:900px){ .hero-stats{justify-content:center;} }
 .hero-stats div b{display:block; font-family:var(--font-display); font-size:26px;}
@@ -360,8 +340,11 @@ html[lang="en"] .skill-group h4{font-family:var(--font-display); font-size:18px;
   border-radius:var(--r-xl); box-shadow:var(--shadow); transform:translateY(24px) scale(.98); transition:transform .45s var(--ease);
 }
 .modal-overlay.open .modal{transform:translateY(0) scale(1);}
-.modal-media{aspect-ratio:16/8; overflow:hidden;}
-.modal-media img{width:100%; height:100%; object-fit:cover;}
+/* عرض الصورة كاملة من غير أي كروب: العرض ثابت (100% من عرض المودال) والطول
+   بيتحدد أوتوماتيك حسب أبعاد الصورة الأصلية بتاعة كل مشروع (object-fit:contain
+   بدل cover) — يعني كل مشروع طوله يختلف عن التاني حسب شكل صورته الحقيقي */
+.modal-media{ max-height:70vh; overflow:hidden; background:var(--bg-3); display:flex; align-items:center; justify-content:center; }
+.modal-media img{ width:100%; height:auto; max-height:70vh; object-fit:contain; display:block; }
 .modal-body{padding:36px;}
 @media(max-width:640px){ .modal-body{padding:24px;} }
 .modal-close{
@@ -448,38 +431,6 @@ a:focus-visible, button:focus-visible, textarea:focus-visible{
 .skip-link:focus{top:12px;}
 
 /* =====================================================
-   PREMIUM MICRO-MOTION
-===================================================== */
-.avatar-ring{
-  animation:avatarFloat 7s ease-in-out infinite;
-  transform-origin:center;
-}
-@keyframes avatarFloat{
-  0%,100%{transform:translateY(0) rotate(0deg);}
-  50%{transform:translateY(-7px) rotate(.35deg);}
-}
-.btn-primary{
-  position:relative; overflow:hidden;
-}
-.btn-primary::after{
-  content:""; position:absolute; top:-20%; bottom:-20%; width:34%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
-  transform:translateX(-180%) skewX(-18deg);
-  animation:primarySheen 5.2s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes primarySheen{
-  0%,62%{transform:translateX(-180%) skewX(-18deg);}
-  78%,100%{transform:translateX(430%) skewX(-18deg);}
-}
-@media(max-width:900px){
-  .avatar-ring{animation-duration:8s;}
-}
-@media(prefers-reduced-motion:reduce){
-  .avatar-ring,.btn-primary::after,.btn-ghost::before,.btn-ghost::after{animation:none;}
-}
-
-/* =====================================================
    2026 REFINEMENT — mobile-first polish, no logic changes
 ===================================================== */
 .section-head{max-width:680px;}
@@ -500,7 +451,7 @@ a:focus-visible, button:focus-visible, textarea:focus-visible{
   .hero-title{--hero-title-size:clamp(38px,10vw,56px); line-height:1.16;}
   .hero-sub{font-size:17px; line-height:1.9; max-width:560px; margin-top:18px;}
   .hero-cta-row{margin-top:28px; gap:10px;}
-  .btn-primary,.btn-ghost{min-width:176px; padding:13px 20px; font-size:12px;}
+  .btn-primary,.btn-ghost{padding:13px 20px; font-size:12px;}
   .avatar-ring{width:min(270px,68vw);}
   .avatar-tag{font-size:10px; padding:8px 12px; bottom:-4px; inset-inline-start:50%; transform:translateX(-50%); white-space:nowrap;}
   .bento{gap:12px;}
@@ -521,7 +472,7 @@ a:focus-visible, button:focus-visible, textarea:focus-visible{
   .proj-value{opacity:1; transform:none; top:12px; inset-inline-end:12px; padding:6px 10px; font-size:9px;}
   .modal-overlay{padding:12px;}
   .modal{max-height:92vh; border-radius:22px;}
-  .modal-media{aspect-ratio:16/9;}
+  .modal-media{ max-height:50vh; }
   .modal-body{padding:22px;}
   .modal-body .proj-title{--project-title-size:24px !important;}
   .contact-panel{padding:58px 22px;}
@@ -539,7 +490,7 @@ a:focus-visible, button:focus-visible, textarea:focus-visible{
   .nav-tools{gap:4px;}
   .hero-title{--hero-title-size:clamp(36px,9.8vw,48px);}
   .hero-sub{font-size:16px;}
-  .hero-cta-row{flex-direction:column; align-items:stretch; width:min(100%,290px); margin-inline:auto;}
+  .hero-cta-row{flex-direction:column; align-items:stretch; max-width:250px; margin-inline:auto;}
   .btn-primary,.btn-ghost{justify-content:center;}
 }
 @media(max-width:360px){
@@ -974,8 +925,8 @@ html[data-theme="light"] .nav-cta{
 /* المودال: صورة الغلاف أو الفيديو */
 .modal-media{ position:relative; }
 .modal-media #modalImg.hidden{ display:none; }
-/* لما الفيديو شغال، بنلغي نسبة العرض الثابتة بتاعة modal-media، ونسيب الفيديو نفسه يتحكم في ارتفاعه */
-.modal-media:has(.modal-video-wrap.active){ aspect-ratio:auto; }
+/* لما الفيديو شغال، نسيب الفيديو نفسه يتحكم في ارتفاعه بالكامل من غير حد أقصى للطول */
+.modal-media:has(.modal-video-wrap.active){ max-height:none; }
 
 .modal-video-wrap{
   display:none;
@@ -984,41 +935,25 @@ html[data-theme="light"] .nav-cta{
   aspect-ratio:16/9;
   background:#000;
   overflow:hidden;
-  align-items:center;
-  justify-content:center;
 }
-.modal-video-wrap.active{ display:flex; }
+.modal-video-wrap.active{ display:block; }
 
-/* الخلفية المموّهة: نسخة مكبّرة من صورة غلاف الفيديو، مموّهة ومعتّمة، بتملي الفراغ حوالين الفيديو */
-.video-backdrop{
-  position:absolute; inset:-24px;
-  background-size:cover; background-position:center;
-  filter:blur(44px) brightness(.45) saturate(1.35);
-  transform:scale(1.15);
-  z-index:1;
-}
+/* الفيديو الطولي (Shorts/Reels): بياخد عرض المودال بالكامل برضه، بس بنسبة طول لعرض 9:16
+   بدل 16:9 — يعني هيبان أطول من الفيديو العادي، وده طبيعي ومقصود عشان يفضل بحجمه الحقيقي */
+.modal-video-wrap.vertical{ aspect-ratio:9/16; }
 
-/* المسرح: الصندوق اللي بيحتوي الفيديو الفعلي بأبعاده الحقيقية، فوق الخلفية المموّهة */
+/* المسرح: بياخد كل مساحة الـ wrap بالظبط (الفيديو نفسه بيملا العرض والطول كاملين) */
 .video-stage{
-  position:relative; z-index:2;
+  position:absolute; inset:0;
   width:100%; height:100%;
 }
 .video-stage iframe{
   position:absolute; inset:0; width:100%; height:100%; border:0;
 }
 
-/* فيديو عمودي (Shorts): مسرح مربّع بدل عريض، والفيديو نفسه طولي 9:16 عائم في النص بحدود وظل واضحين */
-.modal-video-wrap.vertical{ aspect-ratio:1/1; max-height:70vh; }
-.modal-video-wrap.vertical .video-stage{
-  width:auto; height:100%; aspect-ratio:9/16;
-  border-radius:16px; overflow:hidden;
-  box-shadow:0 20px 50px -12px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.08);
-  animation:videoGlow 3.5s ease-in-out infinite;
-}
-@keyframes videoGlow{
-  0%,100%{ box-shadow:0 20px 50px -12px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.08), 0 0 30px 2px rgba(34,224,224,.14); }
-  50%{ box-shadow:0 20px 50px -12px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.08), 0 0 46px 6px rgba(34,224,224,.28); }
-}
+/* مش محتاجين الخلفية المموّهة القديمة دلوقتي بعد ما بقى الفيديو بياخد المساحة كاملة،
+   لكن سبنا الـ div في الـ HTML عشان ميبوظش كود main.js — بس مخفي تمامًا */
+.video-backdrop{ display:none; }
 
 /* رابط احتياطي: بيظهر بس لما فيه فيديو، تحت الفيديو مباشرة، لو التضمين رفض يشتغل */
 .modal-video-fallback{
@@ -1030,6 +965,16 @@ html[data-theme="light"] .nav-cta{
 }
 .modal-video-fallback.active{ display:block; }
 .modal-video-fallback:hover{ color:var(--text); }
+
+/* مشغّل الصوت الخاص بمشاريع التعليق الصوتي */
+.modal-audio-wrap{
+  display:none;
+  padding:16px 20px;
+  background:var(--bg-3);
+  border-bottom:1px solid var(--border);
+}
+.modal-audio-wrap.active{ display:block; }
+.modal-audio-wrap audio{ width:100%; height:40px; }
 
 /* =====================================================
    إعادة تنظيم قسم المهارات — 4 مجموعات واضحة (تصميم / ويب / برمجة / أدوات)
@@ -1172,21 +1117,263 @@ html[data-theme="light"] .nav-cta{
   .sale-badge{ font-size:11px; padding:5px 10px; top:10px; }
 }
 
-/* Final responsive guardrails */
-html, body{min-width:320px;}
-body{padding-bottom:env(safe-area-inset-bottom);}
-@media(max-width:900px){
-  .hero-inner{padding-inline:2px;}
-  .hero-title{max-width:760px; margin-inline:auto;}
-  .hero-cta-row{width:min(100%,340px);}
+/* =====================================================
+   AI CHAT WIDGET — الشات بوت الذكي
+   زرار عايم في زاوية الشاشة، بيفتح نافذة شات صغيرة.
+   بيستخدم نفس متغيرات الألوان بتاعة الموقع (--bg, --accent...)
+   عشان يتلوّن لوحده صح مع الوضع الفاتح/الغامق من غير أي كود إضافي.
+===================================================== */
+
+/* الزرار العايم */
+.chat-fab{
+  position:fixed; bottom:24px; z-index:60;
+  inset-inline-end:24px;
+  width:58px; height:58px; border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--accent-3));
+  color:#fff; font-size:24px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:var(--shadow), var(--glow);
+  cursor:pointer;
+  transition:transform .3s var(--ease);
 }
-@media(min-width:901px){
-  .hero-cta-row{align-items:center;}
+@media (hover:hover) and (pointer:fine){ .chat-fab{ cursor:none; } }
+.chat-fab:hover{ transform:scale(1.08); }
+.chat-fab svg{ width:26px; height:26px; }
+.chat-fab .chat-fab-close{ display:none; }
+.chat-fab.open .chat-fab-chat{ display:none; }
+.chat-fab.open .chat-fab-close{ display:block; }
+
+/* نافذة الشات */
+.chat-panel{
+  position:fixed; bottom:94px; z-index:60;
+  inset-inline-end:24px;
+  width:min(370px, calc(100vw - 32px));
+  height:min(520px, calc(100vh - 140px));
+  background:var(--glass-strong);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  box-shadow:var(--shadow);
+  display:flex; flex-direction:column;
+  overflow:hidden;
+  opacity:0; visibility:hidden; transform:translateY(16px) scale(.97);
+  transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
 }
+.chat-panel.open{ opacity:1; visibility:visible; transform:translateY(0) scale(1); }
+
+.chat-header{
+  padding:16px 18px; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.chat-header-title{ font-family:var(--font-ar); font-weight:700; font-size:15px; }
+.chat-header-sub{ font-size:12px; color:var(--text-faint); }
+
+.chat-body{
+  flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px;
+}
+.chat-msg{
+  max-width:85%; padding:10px 14px; border-radius:var(--r-md);
+  font-size:14.5px; line-height:1.6; word-wrap:break-word;
+}
+.chat-msg.bot{
+  align-self:flex-start;
+  background:var(--bg-3); color:var(--text);
+  border:1px solid var(--border);
+}
+.chat-msg.user{
+  align-self:flex-end;
+  background:var(--accent); color:#fff;
+}
+.chat-msg.typing{ display:flex; gap:4px; align-items:center; padding:14px; }
+.chat-msg.typing i{
+  width:6px; height:6px; border-radius:50%; background:var(--text-faint);
+  animation:chatTyping 1s infinite ease-in-out;
+}
+.chat-msg.typing i:nth-child(2){ animation-delay:.15s; }
+.chat-msg.typing i:nth-child(3){ animation-delay:.3s; }
+@keyframes chatTyping{ 0%,60%,100%{ opacity:.3; transform:translateY(0); } 30%{ opacity:1; transform:translateY(-3px); } }
+
+.chat-input-row{
+  display:flex; gap:8px; padding:12px; border-top:1px solid var(--border);
+}
+.chat-input-row input{
+  flex:1; background:var(--bg-2); border:1px solid var(--border); border-radius:var(--r-sm);
+  padding:10px 14px; color:var(--text); font-family:inherit; font-size:14px; outline:none;
+}
+.chat-input-row input:focus{ border-color:var(--accent); }
+.chat-input-row button{
+  width:40px; height:40px; border-radius:var(--r-sm);
+  background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.chat-input-row button:disabled{ opacity:.5; }
+
 @media(max-width:480px){
-  section{padding-inline:5vw;}
-  .hero{padding-top:calc(var(--nav-h) + 22px);}
-  .hero-title{--hero-title-size:clamp(34px,10vw,47px);}
-  .hero-sub{font-size:15.5px; line-height:1.85;}
-  .btn-primary,.btn-ghost{width:100%; min-width:0;}
+  .chat-fab{ bottom:18px; inset-inline-end:18px; width:52px; height:52px; }
+  .chat-panel{ bottom:80px; inset-inline-end:16px; }
+}
+
+/* زرار زيارة الموقع في نافذة تفاصيل المشروع */
+.modal-visit{ display:none; align-self:flex-start; margin-top:18px; padding:11px 22px; border-radius:999px; border:1px solid var(--accent, #2ec4b6); color:var(--text); text-decoration:none; font-weight:600; transition:background .2s, transform .2s; }
+.modal-visit.active{ display:inline-block; }
+.modal-visit:hover{ background:rgba(46,196,182,.14); transform:translateY(-1px); }
+
+/* =====================================================
+   زرار "تواصل واتساب" (الهيرو): لون ثابت + شريط ضوئي بيلف على الحافة
+   - الخلفية Solid من غير تدرج ولا إضاءة داخلية
+   - الشريط بيتحرك بـ conic-gradient بزاوية متحركة (@property) بدل ما نلف العنصر،
+     عشان يمشي على حافة الزرار نفسها من غير ما يطلع خط مائل جوّه الزرار
+   ===================================================== */
+@property --beam-angle{ syntax:"<angle>"; inherits:false; initial-value:0deg; }
+
+.btn-ghost{
+  --beam-w:2px;
+  position:relative; isolation:isolate; overflow:visible;
+  background:#0a0f1a;                              /* لون ثابت، غيّره هنا لو عاوز لون تاني */
+  color:var(--text) !important;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:none; backdrop-filter:none;
+}
+html[data-theme="light"] .btn-ghost{ background:#111827; color:#f3f5f9 !important; border-color:rgba(17,24,39,.9); }
+
+.btn-ghost::after{ content:none; display:none; animation:none; }
+
+.btn-ghost::before{
+  content:""; position:absolute; inset:-1px; z-index:-1; pointer-events:none;
+  border-radius:inherit; padding:var(--beam-w);
+  background:conic-gradient(from var(--beam-angle),
+    transparent 0deg, transparent 250deg,
+    rgba(34,224,224,.25) 290deg,
+    var(--accent-2) 335deg,
+    #fff 356deg,
+    transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  filter:drop-shadow(0 0 4px rgba(34,224,224,.55));
+  animation:beamOrbit 4s linear infinite;
+}
+@keyframes beamOrbit{ to{ --beam-angle:360deg; } }
+
+.btn-ghost:hover{ background:#0d1422; border-color:rgba(255,255,255,.16); box-shadow:none; }
+html[data-theme="light"] .btn-ghost:hover{ background:#0b1220; }
+
+@media (prefers-reduced-motion:reduce){
+  .btn-ghost::before{ animation:none; --beam-angle:300deg; }
+}
+
+/* سطر تعريفي صغير في الفوتر (محتوى حقيقي مقروء لمحركات البحث والزوار) */
+footer .foot-seo{max-width:720px; margin:22px auto 0; font-size:12px; line-height:1.9; color:var(--text-faint);}
+
+/* =====================================================================
+   LIQUID GLASS — واجهة زجاجية سائلة على طريقة Apple
+   ===================================================================== */
+:root{
+  --lg-fill:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04) 55%,rgba(255,255,255,.09));
+  --lg-fill-strong:linear-gradient(135deg,rgba(255,255,255,.20),rgba(255,255,255,.06) 55%,rgba(255,255,255,.12));
+  --lg-blur:blur(24px) saturate(180%);
+  --lg-rim:linear-gradient(135deg,rgba(255,255,255,.65),rgba(255,255,255,.08) 28%,rgba(255,255,255,.05) 68%,rgba(255,255,255,.4));
+  --lg-shadow:inset 0 1px 1px rgba(255,255,255,.35),inset 0 -1px 1px rgba(255,255,255,.08),inset 0 0 30px rgba(255,255,255,.035),0 18px 44px -16px rgba(0,0,0,.45);
+  --lg-spring:cubic-bezier(.34,1.56,.64,1);
+}
+html[data-theme="light"]{
+  --lg-fill:linear-gradient(135deg,rgba(255,255,255,.72),rgba(255,255,255,.38) 55%,rgba(255,255,255,.6));
+  --lg-fill-strong:linear-gradient(135deg,rgba(255,255,255,.85),rgba(255,255,255,.55) 55%,rgba(255,255,255,.75));
+  --lg-rim:linear-gradient(135deg,rgba(255,255,255,1),rgba(255,255,255,.2) 30%,rgba(60,90,160,.10) 70%,rgba(255,255,255,.9));
+  --lg-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -1px 1px rgba(60,90,160,.08),0 18px 44px -18px rgba(40,60,110,.28);
+}
+
+/* خلفية سائلة: بقع ألوان بتتحرك ببطء ورا الزجاج عشان ينكسر عليها الضوء */
+.bg-layer::before,.bg-layer::after{content:"";position:absolute;pointer-events:none;filter:blur(60px);opacity:.55;will-change:transform,border-radius;}
+.bg-layer::before{width:62vmax;height:62vmax;top:-18vmax;right:-14vmax;background:radial-gradient(circle at 35% 35%,#7c5cff,#2f6bff 45%,transparent 70%);animation:lgBlobA 22s ease-in-out infinite;}
+.bg-layer::after{width:54vmax;height:54vmax;bottom:-20vmax;left:-12vmax;background:radial-gradient(circle at 60% 40%,#22e0e0,#3fa9ff 50%,transparent 72%);animation:lgBlobB 28s ease-in-out infinite;}
+html[data-theme="light"] .bg-layer::before,html[data-theme="light"] .bg-layer::after{opacity:.35;}
+@keyframes lgBlobA{0%,100%{border-radius:42% 58% 63% 37%/45% 40% 60% 55%;transform:translate(0,0) rotate(0)}50%{border-radius:60% 40% 38% 62%/55% 62% 38% 45%;transform:translate(-6vw,8vh) rotate(25deg)}}
+@keyframes lgBlobB{0%,100%{border-radius:55% 45% 40% 60%/50% 60% 40% 50%;transform:translate(0,0) rotate(0)}50%{border-radius:38% 62% 56% 44%/62% 40% 60% 38%;transform:translate(7vw,-7vh) rotate(-22deg)}}
+
+/* السطوح الزجاجية */
+.navbar,.bento-card,.chip,.proj-card,.contact-panel,.avatar-tag,.nav-btn,.modal-meta span,.chat-panel,.modal-price{
+  background:var(--lg-fill);
+  -webkit-backdrop-filter:var(--lg-blur); backdrop-filter:var(--lg-blur);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:var(--lg-shadow);
+}
+html[data-theme="light"] .navbar,html[data-theme="light"] .bento-card,html[data-theme="light"] .chip,html[data-theme="light"] .proj-card,
+html[data-theme="light"] .contact-panel,html[data-theme="light"] .avatar-tag,html[data-theme="light"] .nav-btn,html[data-theme="light"] .chat-panel{border-color:rgba(255,255,255,.7);}
+
+/* حواف مضيئة متدرجة (Rim light) زي زجاج Apple */
+.navbar::after,.bento-card::after,.proj-card::after,.contact-panel::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none; z-index:3;
+  background:var(--lg-rim);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+}
+/* انعكاس ضوء قوسي في الركن العلوي (زي شريط التنقل في الصورة) */
+.navbar::before{
+  content:""; position:absolute; top:3px; inset-inline-end:14%; width:30%; height:42%; border-radius:50%;
+  background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,.38),transparent 70%); filter:blur(2px); pointer-events:none; opacity:.8;
+}
+.navbar{border-radius:9999px; overflow:visible;}
+
+/* عدسة زجاجية بتتحرك تحت اللينك (بتتظبط بالـJS) */
+.nav-links{position:relative;}
+.nav-lens{
+  position:absolute; top:50%; height:34px; margin-top:-17px; border-radius:9999px; pointer-events:none; opacity:0; z-index:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.08));
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.5),0 6px 16px -6px rgba(0,0,0,.35);
+  transition:left .45s var(--lg-spring),width .45s var(--lg-spring),opacity .25s;
+}
+.nav-links a{position:relative; z-index:1;}
+.nav-links a:hover,.nav-links a.active{background:transparent;}
+
+/* بطاقات: لمعة بتتبع الماوس + حركة زنبركية */
+.bento-card{transition:transform .5s var(--lg-spring),border-color .4s,box-shadow .4s;}
+.bento-card:hover{transform:translateY(-6px) scale(1.012);}
+.bento-card::before{background:radial-gradient(280px circle at var(--mx) var(--my),rgba(255,255,255,.16),transparent 70%);}
+.chip{background:var(--lg-fill);transition:transform .4s var(--lg-spring),box-shadow .3s,border-color .3s;}
+.chip:hover{transform:translateY(-4px) scale(1.04);}
+.proj-card{background:var(--lg-fill-strong);}
+.proj-card .glare{background:radial-gradient(420px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.22),transparent 55%);}
+.contact-panel{background:var(--lg-fill-strong);}
+
+/* أزرار */
+.btn-primary{
+  box-shadow:inset 0 1.5px 1px rgba(255,255,255,.65),inset 0 -2px 6px rgba(0,60,120,.25),0 10px 28px -10px rgba(63,169,255,.6);
+  transition:transform .4s var(--lg-spring),box-shadow .35s;
+}
+.btn-primary:hover{transform:translateY(-3px) scale(1.04);}
+.btn-primary:active,.btn-ghost:active,.nav-cta:active,.contact-btn:active{transform:scale(.95);}
+.nav-cta{
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.75)); color:#0a0f1a;
+  box-shadow:inset 0 1px 1px #fff,0 6px 18px -6px rgba(0,0,0,.4); transition:transform .4s var(--lg-spring),background .3s;
+}
+.nav-cta:hover{transform:scale(1.06); background:#fff;}
+.nav-btn:hover{transform:scale(1.12); transition:transform .4s var(--lg-spring);}
+.linkedin-btn{background:var(--lg-fill-strong);-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);box-shadow:var(--lg-shadow);}
+
+/* المودال: الـoverlay بيعمل البلور، والنافذة زجاج كثيف */
+.modal-overlay{background:rgba(6,10,24,.45);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);}
+.modal{background:linear-gradient(135deg,rgba(24,34,58,.86),rgba(14,20,36,.82));border:1px solid rgba(255,255,255,.2);box-shadow:var(--lg-shadow),0 40px 90px -30px rgba(0,0,0,.7);-webkit-backdrop-filter:none;backdrop-filter:none;}
+html[data-theme="light"] .modal{background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(240,244,252,.88));}
+.modal-close{background:rgba(255,255,255,.14);border-radius:50%;box-shadow:inset 0 1px 1px rgba(255,255,255,.4);transition:transform .4s var(--lg-spring);}
+.modal-close:hover{transform:scale(1.12) rotate(90deg);}
+.modal-visit{-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);background:var(--lg-fill);box-shadow:var(--lg-shadow);}
+
+/* الشات */
+.chat-panel{background:var(--lg-fill-strong);border-radius:28px;}
+.chat-msg.bot{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.16);box-shadow:inset 0 1px 1px rgba(255,255,255,.25);}
+.chat-msg.user{background:linear-gradient(180deg,#5db4ff,#2f7dff);box-shadow:inset 0 1px 1px rgba(255,255,255,.5);}
+.chat-fab{box-shadow:inset 0 1.5px 1px rgba(255,255,255,.55),0 14px 34px -10px rgba(63,169,255,.65);transition:transform .45s var(--lg-spring);}
+
+/* موبايل: بلور أخف عشان الأداء */
+@media(max-width:700px){
+  :root{--lg-blur:blur(16px) saturate(170%);}
+  .bg-layer::before,.bg-layer::after{filter:blur(44px);}
+}
+/* لو المتصفح مش بيدعم backdrop-filter */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .navbar,.bento-card,.chip,.proj-card,.contact-panel,.chat-panel{background:var(--bg-2);}
+}
+@media(prefers-reduced-motion:reduce){
+  .bg-layer::before,.bg-layer::after{animation:none;}
+  .nav-lens{transition:none;}
 }
